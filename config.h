@@ -1,6 +1,5 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
-
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 5;       /* snap pixel */
@@ -9,19 +8,19 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=14" , "fontawesome:size=14"}; /*Settings the fonts*/
 static const char dmenufont[]       = "monospace:size=14"; /* Setting the font for Dmenu */
 //background color
-static const char col_gray1[]       = "#333333";
+static const char col_color1[]       = "#333333";
 //inactive window border color
-static const char col_gray2[]       = "#444444";
+static const char col_color2[]       = "#444444";
 //font color
-static const char col_gray3[]       = "#bbbbbb";
+static const char col_color3[]       = "#cccccc";
 //current tag and current window font color
-static const char col_gray4[]       = "#eeeeee";
+static const char col_color4[]       = "#eeeeee";
 // top bar second color (col_custom) and active window border color
 static const char col_custom[]        = "#1b0ff8";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_custom,  col_custom  },
+	[SchemeNorm] = { col_color3, col_color1, col_color2 },
+	[SchemeSel]  = { col_color4, col_custom,  col_custom  },
 };
 
 /* tagging */
@@ -62,27 +61,40 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_custom, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_color1, "-nf", col_color3, "-sb", col_custom, "-sf", col_color4, NULL };
 static const char *termcmd[]  = { "terminator", NULL };
 
 // Custom commands to run to do some volume stuff.
-static const char *volumeupcmd[] = {"pactl", "set-sink-volume","0","+5%", "+5%", NULL};
+static const char *volumeup_cmd[] = {"pactl", "set-sink-volume","0","+5%", "+5%", NULL};
 
-static const char *volumedowncmd[] = {"pactl", "set-sink-volume","0","-5%", "-5%", NULL};
+static const char *volumedown_cmd[] = {"pactl", "set-sink-volume","0","-5%", "-5%", NULL};
 
-static const char *volumemutecmd[] = {"pactl", "set-sink-mute","0","toggle", NULL};
+static const char *volumemute_cmd[] = {"pactl", "set-sink-mute","0","toggle", NULL};
 
-static const char *mic_toggle[] = {"pactl", "set-source-mute", "1", "toggle", NULL};
+static const char *mic_toggle_cmd[] = {"pactl", "set-source-mute", "1", "toggle", NULL};
+
 
 // Custom volume end.
+// Custom brightness settings
+
+static const char *brightness_up_cmd[] = {"brightnessctl", "set", "+10%"};
+
+static const char *brightness_down_cmd[] = {"brightnessctl", "set", "10%-"};
+// Importing the shiftview file to make tag switching easier
+#include "shiftview.c"
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{0,								XF86XK_AudioRaiseVolume, spawn, {.v = volumeupcmd}},
-	{0,								XF86XK_AudioLowerVolume, spawn, {.v = volumedowncmd}},
-	{0,								XF86XK_AudioMute, spawn, {.v = volumemutecmd}},
-	{MODKEY|ControlMask, 			XK_m,		spawn, {.v = mic_toggle}},
+	{0,								XF86XK_AudioRaiseVolume, spawn, {.v = volumeup_cmd} },
+	{0,								XF86XK_AudioLowerVolume, spawn, {.v = volumedown_cmd} },
+	{0,								XF86XK_AudioMute, spawn, {.v = volumemute_cmd} },
+	{ MODKEY|ControlMask, 			XK_m,		spawn, {.v = mic_toggle_cmd} },
+	{ MODKEY,						XK_Right,	shiftview, {.i = +1} },
+	{ MODKEY,						XK_Left,	shiftview, {.i = -1} },
+	{0,								XF86XK_MonBrightnessUp, spawn, {.v = brightness_up_cmd} },
+	{0,								XF86XK_MonBrightnessDown, spawn, {.v = brightness_down_cmd} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

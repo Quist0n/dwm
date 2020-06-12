@@ -1,12 +1,11 @@
-/* See LICENSE file for copyright and license details. */
-#include <X11/XF86keysym.h>
+/* See LICENSE file for copyright and license details. */ #include <X11/XF86keysym.h>
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 5;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=14" , "fontawesome:size=14"}; /*Settings the fonts*/
-static const char dmenufont[]       = "monospace:size=14"; /* Setting the font for Dmenu */
+static const char *fonts[]          = { "monospace:size=12" , "fontawesome:size=12"}; /*Settings the fonts*/
+static const char dmenufont[]       = "monospace:size=12"; /* Setting the font for Dmenu */
 //background color
 static const char col_color1[]       = "#333333";
 //inactive window border color
@@ -65,9 +64,9 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "terminator", NULL };
 
 // Custom commands to run to do some volume stuff.
-static const char *volumeup_cmd[] = {"pactl", "set-sink-volume","0","+5%", "+5%", NULL};
+static const char *volumeup_cmd[] = {"pactl", "set-sink-volume","0","+1%", "+1%", NULL};
 
-static const char *volumedown_cmd[] = {"pactl", "set-sink-volume","0","-5%", "-5%", NULL};
+static const char *volumedown_cmd[] = {"pactl", "set-sink-volume","0","-1%", "-1%", NULL};
 
 static const char *volumemute_cmd[] = {"pactl", "set-sink-mute","0","toggle", NULL};
 
@@ -77,9 +76,9 @@ static const char *mic_toggle_cmd[] = {"pactl", "set-source-mute", "1", "toggle"
 // Custom volume end.
 // Custom brightness settings
 
-static const char *brightness_up_cmd[] = {"brightnessctl", "set", "+10%"};
+static const char *brightness_up_cmd[] = {"brightnessctl", "set", "+1%"};
 
-static const char *brightness_down_cmd[] = {"brightnessctl", "set", "10%-"};
+static const char *brightness_down_cmd[] = {"brightnessctl", "set", "1%-"};
 // Importing the shiftview file to make tag switching easier
 #include "shiftview.c"
 

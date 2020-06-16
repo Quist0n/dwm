@@ -1,4 +1,5 @@
-/* See LICENSE file for copyright and license details. */ #include <X11/XF86keysym.h>
+/* See LICENSE file for copyright and license details. */ 
+#include <X11/XF86keysym.h>
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 5;       /* snap pixel */
@@ -64,9 +65,9 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "terminator", NULL };
 
 // Custom commands to run to do some volume stuff.
-static const char *volumeup_cmd[] = {"pactl", "set-sink-volume","0","+1%", "+1%", NULL};
+static const char *volumeup_cmd[] = {"pactl", "set-sink-volume","0","+2%", "+2%", NULL};
 
-static const char *volumedown_cmd[] = {"pactl", "set-sink-volume","0","-1%", "-1%", NULL};
+static const char *volumedown_cmd[] = {"pactl", "set-sink-volume","0","-2%", "-2%", NULL};
 
 static const char *volumemute_cmd[] = {"pactl", "set-sink-mute","0","toggle", NULL};
 
@@ -76,9 +77,14 @@ static const char *mic_toggle_cmd[] = {"pactl", "set-source-mute", "1", "toggle"
 // Custom volume end.
 // Custom brightness settings
 
-static const char *brightness_up_cmd[] = {"brightnessctl", "set", "+1%"};
+static const char *brightness_up_cmd[] = {"brightnessctl", "set", "+2%"};
 
-static const char *brightness_down_cmd[] = {"brightnessctl", "set", "1%-"};
+static const char *brightness_down_cmd[] = {"brightnessctl", "set", "2%-"};
+
+//Custom command to take a screenshot
+
+static const char *screenshot[] = {"mate-screenshot"};
+
 // Importing the shiftview file to make tag switching easier
 #include "shiftview.c"
 
@@ -94,6 +100,7 @@ static Key keys[] = {
 	{ MODKEY,						XK_Left,	shiftview, {.i = -1} },
 	{0,								XF86XK_MonBrightnessUp, spawn, {.v = brightness_up_cmd} },
 	{0,								XF86XK_MonBrightnessDown, spawn, {.v = brightness_down_cmd} },
+	{0,								XK_Print,				  spawn, {.v = screenshot} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

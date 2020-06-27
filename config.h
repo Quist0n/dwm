@@ -73,7 +73,9 @@ static const char *volumemute_cmd[] = {"pactl", "set-sink-mute","0","toggle", NU
 
 static const char *mic_toggle_cmd[] = {"pactl", "set-source-mute", "1", "toggle", NULL};
 
+static const char *mic_volume_up_cmd[] = {"pactl","set-source-volume","1","+2%", "+2%"};
 
+static const char *mic_volume_down_cmd[] = {"pactl","set-source-volume","1","-2%","-2%"};
 // Custom volume end.
 // Custom brightness settings
 
@@ -92,15 +94,23 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+
 	{0,								XF86XK_AudioRaiseVolume, spawn, {.v = volumeup_cmd} },
 	{0,								XF86XK_AudioLowerVolume, spawn, {.v = volumedown_cmd} },
 	{0,								XF86XK_AudioMute, spawn, {.v = volumemute_cmd} },
-	{ MODKEY|ControlMask, 			XK_m,		spawn, {.v = mic_toggle_cmd} },
+
+	{ MODKEY|ShiftMask,				XK_Up,				spawn, {.v = mic_volume_up_cmd} },
+	{ MODKEY|ShiftMask,				XK_Down,			spawn, {.v = mic_volume_down_cmd} },
+	{ MODKEY|ShiftMask, 			XK_m,		spawn, {.v = mic_toggle_cmd} },
+
 	{ MODKEY,						XK_Right,	shiftview, {.i = +1} },
 	{ MODKEY,						XK_Left,	shiftview, {.i = -1} },
+
 	{0,								XF86XK_MonBrightnessUp, spawn, {.v = brightness_up_cmd} },
 	{0,								XF86XK_MonBrightnessDown, spawn, {.v = brightness_down_cmd} },
+
 	{0,								XK_Print,				  spawn, {.v = screenshot} },
+
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

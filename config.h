@@ -87,6 +87,8 @@ static const char *brightness_down_cmd[] = {"brightnessctl", "set", "2%-"};
 
 static const char *screenshot[] = {"mate-screenshot"};
 
+//Custom emoji menu via dmenu provided by Luke Smith
+static const char *emoji_menu[] = {"dmenuunicode.sh"};
 // Importing the shiftview file to make tag switching easier
 #include "shiftview.c"
 
@@ -110,6 +112,8 @@ static Key keys[] = {
 	{0,								XF86XK_MonBrightnessDown, spawn, {.v = brightness_down_cmd} },
 
 	{0,								XK_Print,				  spawn, {.v = screenshot} },
+
+	{MODKEY,						XK_e,						spawn, {.v = emoji_menu} },
 
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },

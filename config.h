@@ -6,8 +6,8 @@ static const unsigned int snap      = 5;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=12" , "fontawesome:size=12"}; /*Settings the fonts*/
-static const char dmenufont[]       = "monospace:size=12"; /* Setting the font for Dmenu */
+static const char *fonts[]          = { "monospace:size=12" , "fontawesome:size=12", "hack:size=12"}; /*Setting the fonts*/
+static const char dmenufont[]       = "inconsolata:size=12"; /* Setting the font for Dmenu */
 //background color
 static const char col_color1[]       = "#333333";
 //inactive window border color
@@ -69,7 +69,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_color1, "-nf", col_color3, "-sb", col_custom, "-sf", col_color4, NULL };
-static const char *termcmd[]  = { "terminator", NULL };
+static const char *termcmd[]  = { "termite", NULL };
 
 // Custom commands to run to do some volume stuff.
 static const char *volumeup_cmd[] = {"pactl", "set-sink-volume","0","+2%", "+2%", NULL};

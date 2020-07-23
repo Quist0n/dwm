@@ -6,8 +6,8 @@ static const unsigned int snap      = 5;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "joypixels:size=12", "hack:size=12"}; /*Setting the fonts*/
-static const char dmenufont[]       = "hack:size=14"; /* Setting the font for Dmenu */
+static const char *fonts[]          = { "joypixels:size=12", "monospace:size=12"}; /*Setting the fonts*/
+static const char dmenufont[]       = "monospace:size=14"; /* Setting the font for Dmenu */
 //background color
 static const char col_color1[]       = "#333333";
 //inactive window border color

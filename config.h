@@ -1,13 +1,13 @@
 /* See LICENSE file for copyright and license details. */ 
 #include <X11/XF86keysym.h>
 /* appearance */
-static const unsigned int borderpx  = 4;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 5;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "joypixels:size=12", "monospace:size=12"}; /*Setting the fonts*/
-static const char dmenufont[]       = "monospace:size=14"; /* Setting the font for Dmenu */
+static const char *fonts[]          = {"Hack Nerd Font:size=12:style=Regular", "JoyPixels:size=12:antialias=true:autohint=true", "monospace:size=12"}; /*Setting the fonts*/
+static const char dmenufont[]       = "Hack Nerd Font:size=14:style=Bold"; /* Setting the font for Dmenu */
 //background color
 static const char col_color1[]       = "#333333";
 //inactive window border color
@@ -72,7 +72,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_color1, "-nf", col_color3, "-sb", col_custom, "-sf", col_color4, NULL };
-static const char *termcmd[]  = { "termite", NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 // Custom commands to run to do some volume stuff.
 static const char *volumeup_cmd[] = {"pactl", "set-sink-volume","0","+2%", "+2%", NULL};

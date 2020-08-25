@@ -75,17 +75,17 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 // Custom commands to run to do some volume stuff.
-static const char *volumeup_cmd[] = {"pactl", "set-sink-volume","0","+2%", "+2%", NULL};
+static const char *volumeup_cmd[] = {"amixer", "-q","sset", "Master","2%+", NULL};
 
-static const char *volumedown_cmd[] = {"pactl", "set-sink-volume","0","-2%", "-2%", NULL};
+static const char *volumedown_cmd[] = {"amixer", "-q","sset", "Master","2%-", NULL};
 
-static const char *volumemute_cmd[] = {"pactl", "set-sink-mute","0","toggle", NULL};
+static const char *volumemute_cmd[] = {"amixer", "-q","sset","Master", "toggle", NULL};
 
-static const char *mic_toggle_cmd[] = {"pactl", "set-source-mute", "1", "toggle", NULL};
+static const char *mic_toggle_cmd[] = {"amixer", "-q", "sset", "Capture", "toggle", NULL};
 
-static const char *mic_volume_up_cmd[] = {"pactl","set-source-volume","1","+2%", "+2%"};
+static const char *mic_volume_up_cmd[] = {"amixer", "-q", "sset", "Capture", "2%+", NULL};
 
-static const char *mic_volume_down_cmd[] = {"pactl","set-source-volume","1","-2%","-2%"};
+static const char *mic_volume_down_cmd[] = {"amixer", "-q", "sset", "Capture", "2%-", NULL};
 // Custom volume end.
 // Custom brightness settings
 

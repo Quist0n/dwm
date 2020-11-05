@@ -106,14 +106,15 @@ static const char *emoji_menu[] = {"dmenuunicode.sh"};
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+    { MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 
 	{0,								XF86XK_AudioRaiseVolume, spawn, {.v = volumeup_cmd} },
 	{0,								XF86XK_AudioLowerVolume, spawn, {.v = volumedown_cmd} },
 	{0,								XF86XK_AudioMute, spawn, {.v = volumemute_cmd} },
 
-	{ MODKEY|ShiftMask,				XK_Up,				spawn, {.v = mic_volume_up_cmd} },
-	{ MODKEY|ShiftMask,				XK_Down,			spawn, {.v = mic_volume_down_cmd} },
+    { MODKEY|ShiftMask,				XK_k,				spawn, {.v = mic_volume_up_cmd} },
+	{ MODKEY|ShiftMask,				XK_j,			spawn, {.v = mic_volume_down_cmd} },
 	{ MODKEY|ShiftMask, 			XK_m,		spawn, {.v = mic_toggle_cmd} },
 
 	{ MODKEY,						XK_Right,	shiftview, {.i = +1} },
@@ -170,7 +171,7 @@ static Button buttons[] = {
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         Button2,        resizemouse,    {0} },
+	{ ClkClientWin,         MODKEY|ShiftMask,         Button1,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },

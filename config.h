@@ -35,10 +35,8 @@ static const Rule rules[] = {
 		/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "Terminator",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "Alacritty",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "Xterm",      NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ "Termite",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "st",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
@@ -74,31 +72,6 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_color1, "-nf", col_color3, "-sb", col_custom, "-sf", col_color4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
-// Custom commands to run to do some volume stuff.
-static const char *volumeup_cmd[] = {"amixer", "-q","sset", "Master","2%+", NULL};
-
-static const char *volumedown_cmd[] = {"amixer", "-q","sset", "Master","2%-", NULL};
-
-static const char *volumemute_cmd[] = {"amixer", "-q","sset","Master", "toggle", NULL};
-
-static const char *mic_toggle_cmd[] = {"amixer", "-q", "sset", "Capture", "toggle", NULL};
-
-static const char *mic_volume_up_cmd[] = {"amixer", "-q", "sset", "Capture", "2%+", NULL};
-
-static const char *mic_volume_down_cmd[] = {"amixer", "-q", "sset", "Capture", "2%-", NULL};
-// Custom volume end.
-// Custom brightness settings
-
-static const char *brightness_up_cmd[] = {"brightnessctl", "set", "+2%"};
-
-static const char *brightness_down_cmd[] = {"brightnessctl", "set", "2%-"};
-
-//Custom command to take a screenshot
-
-static const char *screenshot[] = {"mate-screenshot"};
-
-//Custom emoji menu via dmenu provided by Luke Smith
-static const char *emoji_menu[] = {"dmenuunicode.sh"};
 
 // Importing the shiftview file to make tag switching easier
 #include "shiftview.c"
@@ -109,23 +82,8 @@ static Key keys[] = {
     { MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 
-	{0,								XF86XK_AudioRaiseVolume, spawn, {.v = volumeup_cmd} },
-	{0,								XF86XK_AudioLowerVolume, spawn, {.v = volumedown_cmd} },
-	{0,								XF86XK_AudioMute, spawn, {.v = volumemute_cmd} },
-
-    { MODKEY|ShiftMask,				XK_k,				spawn, {.v = mic_volume_up_cmd} },
-	{ MODKEY|ShiftMask,				XK_j,			spawn, {.v = mic_volume_down_cmd} },
-	{ MODKEY|ShiftMask, 			XK_m,		spawn, {.v = mic_toggle_cmd} },
-
 	{ MODKEY,						XK_Right,	shiftview, {.i = +1} },
 	{ MODKEY,						XK_Left,	shiftview, {.i = -1} },
-
-	{0,								XF86XK_MonBrightnessUp, spawn, {.v = brightness_up_cmd} },
-	{0,								XF86XK_MonBrightnessDown, spawn, {.v = brightness_down_cmd} },
-
-	{0,								XK_Print,				  spawn, {.v = screenshot} },
-
-	{MODKEY,						XK_e,						spawn, {.v = emoji_menu} },
 
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = +1 } },

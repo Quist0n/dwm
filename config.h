@@ -72,7 +72,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_color1, "-nf", col_color3, "-sb", col_custom, "-sf", col_color4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+//static const char *termcmd[]  = { "alacritty", NULL };
 
 
 // Importing the shiftview file to make tag switching easier
@@ -81,7 +81,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+//	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 
 	{ MODKEY,						XK_Right,	shiftview, {.i = +1} },
 	{ MODKEY,						XK_Left,	shiftview, {.i = -1} },
@@ -128,7 +128,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+//	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY|ShiftMask,         Button1,        resizemouse,    {0} },

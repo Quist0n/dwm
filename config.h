@@ -9,13 +9,13 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {"Hack Nerd Font:size=12:style=Regular", "JoyPixels:size=12:antialias=true:autohint=true", "monospace:size=12"}; /*Setting the fonts*/
 static const char dmenufont[]       = "Hack Nerd Font:size=14:style=Bold"; /* Setting the font for Dmenu */
 //background color
-static const char col_color1[]       = "#333333";
+static const char col_color1[]       = "#111111";
 //inactive window border color
-static const char col_color2[]       = "#444444";
+static const char col_color2[]       = "#111111";
 //font color
 static const char col_color3[]       = "#cccccc";
 //current tag and current window font color
-static const char col_color4[]       = "#eeeeee";
+static const char col_color4[]       = "#000000";
 // top bar second color (col_custom) and active window border color
 static const char col_custom[]        = "#1b0ff8";
 static const char *colors[][3]      = {
@@ -34,11 +34,16 @@ static const Rule rules[] = {
 	 */
 		/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
+	{ "KeePassXC",    NULL,     NULL,           1 << 8,         0,          0,           0,        -1 },
+	{ "firefox", NULL,     NULL,           1 << 1,    0,          0,          -1,        -1 },
+	{ "brave-browser", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
+	{ "Brave-browser", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
+	{ "keybase", NULL,     NULL,           1 << 3,    0,          0,          -1,        -1 },
+	{ "Keybase", NULL,     NULL,           1 << 3,    0,          0,          -1,        -1 },
 	{ "Alacritty",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "Xterm",      NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "st",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 

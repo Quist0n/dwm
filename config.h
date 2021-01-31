@@ -1,4 +1,4 @@
-/* See LICENSE file for copyright and license details. */ 
+/* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -34,15 +34,21 @@ static const Rule rules[] = {
 	 */
 		/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "KeePassXC",    NULL,     NULL,           1 << 8,         0,          0,           0,        -1 },
-	{ "firefox", NULL,     NULL,           1 << 1,    0,          0,          -1,        -1 },
+//Make spawning rules for browsers, make firefox floating
+	{ "firefox", NULL,     NULL,           1 << 1,    1,          0,          -1,        -1 },
 	{ "Brave-browser", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
-	{ "Keybase", NULL,     NULL,           1 << 3,    0,          0,          -1,        -1 },
-	{ "lightcord", NULL,     NULL,           1 << 3,    0,          0,          -1,        -1 },
-	{ "Ripcord", NULL,     NULL,           1 << 3,    0,          0,          -1,        -1 },
-	{ "TelegramDesktop", NULL,     NULL,           1 << 3,    0,          0,          -1,        -1 },
+//Make spawning rules for other programs
+	{ "Keybase", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
+	{ "lightcord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
+	{ "Ripcord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
+	{ "TelegramDesktop", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
+	{ "FreeTube", NULL,     NULL,           1 << 3,    0,          0,          -1,        -1 },
+	{ "qBittorrent", NULL,     NULL,           1 << 4,    0,          0,          -1,        -1 },
+//Make spawning rules for terminals, allow window swallowing
 	{ "Alacritty",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "Xterm",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+//Default spawning rule = spawn on the current tag
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -63,7 +69,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod4Mask 
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \

@@ -34,8 +34,8 @@ static const Rule rules[] = {
 	 */
 		/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "KeePassXC",    NULL,     NULL,           1 << 8,         0,          0,           0,        -1 },
-//Make spawning rules for browsers, make firefox floating
-	{ "firefox", NULL,     NULL,           1 << 1,    1,          0,          -1,        -1 },
+//Make spawning rules for browsers
+	{ "firefox", NULL,     NULL,           1 << 1,    0,          0,          -1,        -1 },
 	{ "Brave-browser", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
 //Make spawning rules for other programs
 	{ "Keybase", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },

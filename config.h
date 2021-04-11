@@ -42,14 +42,16 @@ static const Rule rules[] = {
 	{ "lightcord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "Ripcord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "TelegramDesktop", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
+	{ "Signal", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "FreeTube", NULL,     NULL,           1 << 3,    0,          0,          -1,        -1 },
 	{ "qBittorrent", NULL,     NULL,           1 << 4,    0,          0,          -1,        -1 },
-	{ "Steam", NULL,     NULL,           1 << 5,    0,          0,          -1,        -1 },
+	{ "Steam", NULL,     NULL,           1 << 5,    0,          0,          1,        -1 },
+	{ "Mailspring", NULL,     NULL,           1 << 7,    0,          0,          1,        -1 },
 //Make spawning rules for terminals, allow window swallowing
 	{ "Alacritty",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "Xterm",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
-//Default spawning rule = spawn on the current tag
+//Make xev not get window swallowed
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -59,14 +61,12 @@ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 #include "layouts.c"
-#include "tcl.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 	{ "[][]",      grid },
-	{ "|||",      tcl },
 };
 
 /* key definitions */
@@ -94,9 +94,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 //	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 
-	{ MODKEY,						XK_Right,	shiftview, {.i = +1} },
-	{ MODKEY,						XK_Left,	shiftview, {.i = -1} },
-
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = -1 } },
@@ -105,16 +102,17 @@ static Key keys[] = {
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY,                       XK_s,      view,           {0} },
+	{ MODKEY,                       XK_Tab,    shiftview,      { .i = +1} },
+	{ MODKEY|ShiftMask,             XK_Tab,    shiftview,      { .i = -1} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-    { MODKEY|ShiftMask,             XK_f,  togglefullscr, {0} },
+    { MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
     { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },

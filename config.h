@@ -41,6 +41,7 @@ static const Rule rules[] = {
 //Make spawning rules for other programs
 	{ "Keybase", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "lightcord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
+	{ "Discord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "Ripcord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "TelegramDesktop", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "Signal", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },

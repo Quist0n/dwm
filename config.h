@@ -17,7 +17,7 @@ static const char col_color3[]       = "#cccccc";
 //current tag and current window font color
 static const char col_color4[]       = "#000000";
 // top bar second color (col_custom) and active window border color
-static const char col_custom[]        = "#1b0ff8";
+static const char col_custom[]        = "#e5e1ff";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_color3, col_color1, col_color2 },
@@ -41,10 +41,12 @@ static const Rule rules[] = {
 //Make spawning rules for other programs
 	{ "Keybase", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "lightcord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
-	{ "Discord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
+	{ "discord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "Ripcord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "TelegramDesktop", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "Signal", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
+	{ "Ferdi", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
+	{ "Pidgin", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "FreeTube", NULL,     NULL,           1 << 3,    0,          0,          -1,        -1 },
 	{ "qBittorrent", NULL,     NULL,           1 << 4,    0,          0,          -1,        -1 },
 	{ "Steam", NULL,     NULL,           1 << 5,    0,          0,          1,        -1 },

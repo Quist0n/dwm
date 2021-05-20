@@ -33,7 +33,6 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 		/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "KeePassXC",    NULL,     NULL,           1 << 8,         0,          0,           0,        -1 },
 //Make spawning rules for browsers
 	{ "firefox", NULL,     NULL,           1 << 1,    0,          0,          -1,        -1 },
 	{ "Brave-browser", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
@@ -57,7 +56,7 @@ static const Rule rules[] = {
 	{ "Xterm",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 //Make xev not get window swallowed
-	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	{ NULL,      NULL,     "Event Tester", 0,         1,          0,           1,        -1 }, /* xev */
 };
 
 /* layout(s) */

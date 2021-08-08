@@ -4,9 +4,7 @@
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 5;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
-static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = {"Hack Nerd Font:size=12:style=Regular", "JoyPixels:size=12:antialias=true:autohint=true", "monospace:size=12"}; /*Setting the fonts*/
+static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */ static const int topbar             = 1;        /* 0 means bottom bar */ static const char *fonts[]          = {"Hack Nerd Font:size=12:style=Regular", /*"JoyPixels:size=12:antialias=true:autohint=true",*/ "monospace:size=12"}; /*Setting the fonts*/
 static const char dmenufont[]       = "Hack Nerd Font:size=14:style=Bold"; /* Setting the font for Dmenu */
 //background color
 static const char col_color1[]       = "#111111";
@@ -17,7 +15,7 @@ static const char col_color3[]       = "#cccccc";
 //current tag and current window font color
 static const char col_color4[]       = "#000000";
 // top bar second color (col_custom) and active window border color
-static const char col_custom[]        = "#e5e1ff";
+static const char col_custom[]       = "#e5e1ff";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_color3, col_color1, col_color2 },
@@ -39,6 +37,7 @@ static const Rule rules[] = {
 	{ "Tor Browser", NULL,     NULL,           1 << 6,    1,          0,          -1,        -1 },
 //Make spawning rules for other programs
 	{ "Keybase", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
+	{ "Element", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "lightcord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "discord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "Ripcord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
@@ -48,6 +47,7 @@ static const Rule rules[] = {
 	{ "Pidgin", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "FreeTube", NULL,     NULL,           1 << 3,    0,          0,          -1,        -1 },
 	{ "qBittorrent", NULL,     NULL,           1 << 4,    0,          0,          -1,        -1 },
+	{ "Hydrus Client", NULL,     NULL,           1 << 4,    0,          0,          -1,        -1 },
 	{ "Steam", NULL,     NULL,           1 << 5,    0,          0,          1,        -1 },
 	{ "Mailspring", NULL,     NULL,           1 << 7,    0,          0,          1,        -1 },
 	{ "zoom", NULL,     NULL,           1 << 7,    0,          0,          1,        -1 },
@@ -60,7 +60,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
@@ -103,8 +103,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_j,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.01} },
+	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.01} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_s,      view,           {0} },
 	{ MODKEY,                       XK_Tab,    shiftview,      { .i = +1} },

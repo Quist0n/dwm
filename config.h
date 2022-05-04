@@ -39,7 +39,6 @@ static const Rule rules[] = {
 //Make spawning rules for browsers
 	{ "firefox", NULL,     NULL,           1 << 1,    0,          0,          -1,        -1 },
 	{ "Brave-browser", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
-	{ "Tor Browser", NULL,     NULL,           1 << 8,    1,          0,          -1,        -1 },
 //Make spawning rules for other programs
 	{ "Element", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "discord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },

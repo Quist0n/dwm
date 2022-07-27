@@ -47,7 +47,7 @@ static const Rule rules[] = {
 	{ "Signal", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "FreeTube", NULL,     NULL,           1 << 3,    0,          0,          -1,        -1 },
 	{ "qBittorrent", NULL,     NULL,           1 << 5,    0,          0,          -1,        -1 },
-	{ "Steam", NULL,     NULL,           1 << 6,    0,          0,          1,        -1 },
+	{ "Steam", NULL,     NULL,           1 << 6,    0,          0,          0,        -1 },
 	{ "zoom", NULL,     NULL,           1 << 7,    0,          0,          1,        -1 },
 //Make spawning rules for terminals, allow window swallowing
 	{ "Alacritty",      NULL,     NULL,           0,         0,          1,           0,        -1 },

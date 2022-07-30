@@ -2,7 +2,7 @@
 #include <X11/XF86keysym.h>
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int snap      = 5;       /* snap pixel */
+static const unsigned int snap      = 16;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int topbar             = 0;        /* 0 means bottom bar */
@@ -106,7 +106,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.01} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.01} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_s,      view,           {0} },
+//	{ MODKEY,                       XK_s,      view,           {0} },
 	{ MODKEY,                       XK_Tab,    shiftview,      { .i = +1} },
 	{ MODKEY|ShiftMask,             XK_Tab,    shiftview,      { .i = -1} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },

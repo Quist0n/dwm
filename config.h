@@ -42,6 +42,7 @@ static const Rule rules[] = {
 	{ "librewolf", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
 //Make spawning rules for other programs
 	{ "Element", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
+	{ "nheko", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "discord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "Ripcord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "TelegramDesktop", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },

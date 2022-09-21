@@ -48,6 +48,8 @@ static const Rule rules[] = {
 	{ "TelegramDesktop", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "Signal", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "FreeTube", NULL,     NULL,           1 << 3,    0,          0,          -1,        -1 },
+	{ "Ferdium", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
+	{ "Hydrus Client", NULL,     NULL,           1 << 4,    0,          0,          -1,        -1 },
 	{ "qBittorrent", NULL,     NULL,           1 << 5,    0,          0,          -1,        -1 },
 	{ "Steam", NULL,     NULL,           1 << 6,    0,          0,          0,        -1 },
 	{ "zoom", NULL,     NULL,           1 << 7,    0,          0,          1,        -1 },

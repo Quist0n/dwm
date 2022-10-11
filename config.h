@@ -2,6 +2,8 @@
 #include <X11/XF86keysym.h>
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const int startwithgaps[]    = { 1 };	/* 1 means gaps are used by default, this can be customized for each tag */
+static const unsigned int gappx[]   = { 10 };   /* default gap between windows in pixels, this can be customized for each tag */
 static const unsigned int snap      = 16;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
@@ -12,11 +14,11 @@ static const char *fonts[]          = {"Hack Nerd Font:size=12:style=Regular",
 
 static const char dmenufont[]       = "Hack Nerd Font:size=14:style=Bold"; /* Setting the font for Dmenu */
 //background color
-static const char col_color1[]       = "#111111";
+static const char col_color1[]       = "#000000";
 //inactive window border color
-static const char col_color2[]       = "#111111";
+static const char col_color2[]       = "#000000";
 //font color
-static const char col_color3[]       = "#cccccc";
+static const char col_color3[]       = "#e5e1ff";
 //current tag and current window font color
 static const char col_color4[]       = "#000000";
 // top bar second color (col_custom) and active window border color
@@ -39,7 +41,7 @@ static const Rule rules[] = {
 //Make spawning rules for browsers
 	{ "firefox", NULL,     NULL,           1 << 1,    0,          0,          -1,        -1 },
 	{ "Brave-browser", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
-	{ "librewolf", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
+	{ "Librewolf", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
 //Make spawning rules for other programs
 	{ "Element", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
 	{ "nheko", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
@@ -67,13 +69,13 @@ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int attachdirection = 5;    /* 0 default, 1 above, 2 aside, 3 below, 4 bottom, 5 top */
 
-#include "layouts.c"
+#include "gaplessgrid.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-	{ "[][]",      grid },
+    { "[][]",      gaplessgrid },
 };
 
 /* key definitions */
@@ -127,6 +129,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
+	{ MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
+	{ MODKEY|ShiftMask,             XK_minus,  setgaps,        {.i = GAP_RESET } },
+	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = GAP_TOGGLE} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
     TAGKEYS(                        XK_3,                      2)

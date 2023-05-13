@@ -14,19 +14,19 @@ static const char *fonts[]          = {"Hack Nerd Font:size=12:style=Regular",
 
 static const char dmenufont[]       = "Hack Nerd Font:size=14:style=Bold"; /* Setting the font for Dmenu */
 //background color
-static const char col_color1[]       = "#000000";
+static const char col_gray1[]       = "#282a36";
 //inactive window border color
-static const char col_color2[]       = "#000000";
+static const char col_gray2[]       = "#ffb86c";
 //font color
-static const char col_color3[]       = "#e5e1ff";
+static const char col_gray3[]       = "#ff79c6";
 //current tag and current window font color
-static const char col_color4[]       = "#000000";
+static const char col_gray4[]       = "#ffb86c";
 // top bar second color (col_custom) and active window border color
-static const char col_custom[]       = "#e5e1ff";
+static const char col_cyan[]        = "#282a36";
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_color3, col_color1, col_color2 },
-	[SchemeSel]  = { col_color4, col_custom,  col_custom  },
+    /*               fg         bg         border   */
+    [SchemeNorm] = { col_gray3, col_gray1, col_cyan },
+    [SchemeSel]  = { col_gray4, col_cyan,  col_gray2  },
 };
 
 /* tagging */
@@ -39,21 +39,21 @@ static const Rule rules[] = {
 	 */
 		/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 //Make spawning rules for browsers
-	{ "firefox", NULL,     NULL,           1 << 1,    0,          0,          -1,        -1 },
-	{ "Brave-browser", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
-	{ "Librewolf", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
+	{ "firefox", NULL,     NULL,           1 << 1,    0,          0,          1,        -1 },
+	{ "Brave-browser", NULL,     NULL,           1 << 2,    0,          0,          1,        -1 },
+	{ "Librewolf", NULL,     NULL,           1 << 2,    0,          0,          1,        -1 },
 //Make spawning rules for other programs
-	{ "Element", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
-	{ "nheko", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
-	{ "discord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
-	{ "Ripcord", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
-	{ "TelegramDesktop", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
-	{ "Signal", NULL,     NULL,           1 << 0,    0,          0,          -1,        -1 },
-	{ "FreeTube", NULL,     NULL,           1 << 3,    0,          0,          -1,        -1 },
-	{ "Ferdium", NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
-	{ "Hydrus Client", NULL,     NULL,           1 << 4,    0,          0,          -1,        -1 },
-	{ "qBittorrent", NULL,     NULL,           1 << 5,    0,          0,          -1,        -1 },
-	{ "Steam", NULL,     NULL,           1 << 6,    0,          0,          0,        -1 },
+	{ "Element", NULL,     NULL,           1 << 0,    0,          0,          1,        -1 },
+	{ "nheko", NULL,     NULL,           1 << 0,    0,          0,          1,        -1 },
+	{ "discord", NULL,     NULL,           1 << 0,    0,          0,          1,        -1 },
+	{ "Ripcord", NULL,     NULL,           1 << 0,    0,          0,          1,        -1 },
+	{ "TelegramDesktop", NULL,     NULL,           1 << 0,    0,          0,          1,        -1 },
+	{ "Signal", NULL,     NULL,           1 << 0,    0,          0,          1,        -1 },
+	{ "FreeTube", NULL,     NULL,           1 << 3,    0,          0,          1,        -1 },
+	{ "Ferdium", NULL,     NULL,           1 << 2,    0,          0,          1,        -1 },
+	{ "Hydrus Client", NULL,     NULL,           1 << 4,    0,          0,          1,        -1 },
+	{ "qBittorrent", NULL,     NULL,           1 << 5,    0,          0,          1,        -1 },
+	{ "Steam", NULL,     NULL,           1 << 6,    0,          1,          1,        -1 },
 	{ "zoom", NULL,     NULL,           1 << 7,    0,          0,          1,        -1 },
 //Make spawning rules for terminals, allow window swallowing
 	{ "Alacritty",      NULL,     NULL,           0,         0,          1,           0,        -1 },
@@ -91,7 +91,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_color1, "-nf", col_color3, "-sb", col_custom, "-sf", col_color4, "-b", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, "-b", NULL };
 //static const char *termcmd[]  = { "alacritty", NULL };
 
 
